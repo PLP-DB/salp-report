@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base target="_top">
     <title>รายงานชั้นเรียนออทิสติก พล.ป.</title>
-        <!-- 
+    <!-- 
       ========================================
       [วิธีตั้งค่า FAVICON แบบไฟล์ในเครื่อง]
       1. เอาไฟล์รูปโลโก้ของคุณ ตั้งชื่อว่า "favicon.png"
@@ -17,8 +17,30 @@
     <!-- เผื่อสำหรับ iPhone/iPad (Optional) -->
     <link rel="apple-touch-icon" href="favicon.png">
     
+    <style>
+        /* ลบขอบและช่องว่างที่เบราว์เซอร์ตั้งค่าเริ่มต้นไว้ */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* ซ่อนแถบเลื่อน (Scrollbar) ของหน้าหลัก เพื่อให้ใช้ของ iframe แทน */
+            background-color: #f8f9fa; /* สีพื้นหลังเผื่อโหลดช้า */
+        }
+
+        /* ตั้งค่า iframe ให้เต็มจอแบบ 100% ของ Viewport */
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-<iframe style="position: absolute; top: 0;left: 0;width: 100%;height: 100%; border: 0;" src="https://script.google.com/macros/s/AKfycbyCGQIzctGKTLJKKAzE3UGZQ9NJ96Amh7rsEXjwUC-GnJGxzZraCBijJYjIOjKByjhvEA/exec"></iframe>
+    <!-- ใส่ลิงก์ Exec ของคุณตรง src -->
+    <iframe src="https://script.google.com/macros/s/AKfycbyCGQIzctGKTLJKKAzE3UGZQ9NJ96Amh7rsEXjwUC-GnJGxzZraCBijJYjIOjKByjhvEA/exec"></iframe>
 </body>
 </html>
