@@ -2,43 +2,42 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>รายงานชั้นเรียนออทิสติก พล.ป.</title>
-    
-    <!-- 
-      ========================================
-      [วิธีตั้งค่า FAVICON แบบไฟล์ในเครื่อง]
-      1. เอาไฟล์รูปโลโก้ของคุณ ตั้งชื่อว่า "favicon.png"
-      2. วางไฟล์รูปไว้ในโฟลเดอร์เดียวกับไฟล์ index.html นี้
-      3. โค้ดด้านล่างนี้จะดึงรูปนั้นมาแสดงครับ
-      ========================================
-    -->
     <link rel="icon" type="image/png" href="./favicon.png">
-    <!-- เผื่อสำหรับ iPhone/iPad (Optional) -->
     <link rel="apple-touch-icon" href="favicon.png">
     
     <style>
-        /* ล้างค่าขอบจอ และกำหนดไม่ให้หน้าเว็บหลักมี Scrollbar เพื่อกันอาการภาพล้น */
+        /* รีเซ็ตค่าขอบหน้าจอของ GitHub ให้เป็น 0 ทั้งหมด */
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; 
-            background-color: #f0f0f0; /* ใส่สีพื้นหลังกันกระตุกตอนโหลด (เปลี่ยนสีได้) */
+            overflow: hidden; /* บังคับไม่ให้หน้าจอหลักมีแถบเลื่อน */
+            background-color: #ffffff;
         }
         
-        /* จัดขนาด iframe ให้พอดีกับหน้าจอเป๊ะๆ */
-        iframe {
-            width: 100vw;
-            height: 100vh;
-            border: 0;
-            display: block;
+        /* ตั้งค่า iframe ให้ยืดเต็มพื้นที่แบบ Absolute */
+        .gas-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://script.google.com/macros/s/AKfycbyCGQIzctGKTLJKKAzE3UGZQ9NJ96Amh7rsEXjwUC-GnJGxzZraCBijJYjIOjKByjhvEA/exec"></iframe>
+
+    <!-- เปลี่ยนมาใช้ Class แทนการเขียน Style ในแท็กโดยตรง -->
+    <iframe class="gas-iframe" src="https://script.google.com/macros/s/AKfycbyCGQIzctGKTLJKKAzE3UGZQ9NJ96Amh7rsEXjwUC-GnJGxzZraCBijJYjIOjKByjhvEA/exec" allowfullscreen></iframe>
+
 </body>
 </html>
