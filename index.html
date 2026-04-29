@@ -2,42 +2,74 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>รายงานชั้นเรียนออทิสติก พล.ป.</title>
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     
     <style>
-        /* รีเซ็ตค่าขอบหน้าจอของ GitHub ให้เป็น 0 ทั้งหมด */
+        /* รีเซ็ตทุกอย่างให้แน่ใจว่าไม่มีอะไรเกินขอบเขตหน้าจอ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
-            overflow: hidden; /* บังคับไม่ให้หน้าจอหลักมีแถบเลื่อน */
-            background-color: #ffffff;
+            height: 100%; /* บังคับความสูง 100% ของ Viewport */
+            overflow: hidden; /* ปิด Scrollbar ของหน้าเว็บหลักเด็ดขาด */
+            background-color: #f8fafc;
         }
         
-        /* ตั้งค่า iframe ให้ยืดเต็มพื้นที่แบบ Absolute */
-        .gas-iframe {
+        /* สร้าง Container สำหรับใส่ iframe เพื่อควบคุมขนาดให้แม่นยำ */
+        .iframe-container {
             position: absolute;
             top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
+            width: 100%;
+            height: 100%;
+            /* ใช้ calc เพื่อเผื่อความคลาดเคลื่อนเล็กน้อย (ถ้าจำเป็น) */
+            /* height: calc(100% - 4px); */ 
+            overflow: hidden;
+        }
+
+        .gas-iframe {
             width: 100%;
             height: 100%;
             border: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <!-- เปลี่ยนมาใช้ Class แทนการเขียน Style ในแท็กโดยตรง -->
-    <iframe class="gas-iframe" src="https://script.google.com/macros/s/AKfycbyCGQIzctGKTLJKKAzE3UGZQ9NJ96Amh7rsEXjwUC-GnJGxzZraCBijJYjIOjKByjhvEA/exec" allowfullscreen></iframe>
+    <div class="iframe-container">
+        <!-- ใส่ลิงก์ GAS ของคุณ -->
+        <iframe 
+            class="gas-iframe" 
+            src="https://script.google.com/macros/s/AKfycbyCGQIzctGKTLJKKAzE3UGZQ9NJ96Amh7rsEXjwUC-GnJGxzZraCBijJYjIOjKByjhvEA/exec" 
+            allowfullscreen="true"
+            scrolling="yes" 
+            id="gasFrame">
+        </iframe>
+    </div>
 
+    <script>
+        // สคริปต์เสริมเพื่อบังคับให้ iframe รีไซส์ตัวเองเมื่อหน้าต่างเบราว์เซอร์เปลี่ยนขนาด
+        // ช่วยลดปัญหาเวลาเปิดในจอต่างขนาดกัน
+        function resizeIframe() {
+            var iframe = document.getElementById('gasFrame');
+            if(iframe) {
+                // บังคับความกว้างและความสูงให้เท่ากับ innerWidth/innerHeight ของ Window
+                iframe.style.width = window.innerWidth + 'px';
+                iframe.style.height = window.innerHeight + 'px';
+            }
+        }
+
+        // เรียกใช้ตอนโหลดเสร็จ และตอนที่เบราว์เซอร์เปลี่ยนขนาด
+        window.addEventListener('load', resizeIframe);
+        window.addEventListener('resize', resizeIframe);
+    </script>
 </body>
 </html>
